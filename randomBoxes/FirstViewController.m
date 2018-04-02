@@ -21,15 +21,11 @@ DrawingShape *drawing;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-
-   
-    
     drawing = [[DrawingShape alloc] initWithFrame:CGRectMake(20.0,20.0,310.0,500.0)];
     drawing.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:drawing];
+    self.view.clearsContextBeforeDrawing = false;
     
-   
-   
 }
 
 
@@ -53,11 +49,9 @@ DrawingShape *drawing;
     
     NSLog(@" touched x = %f  y = %f ",[myTouch locationInView:self.view].x,[myTouch locationInView:self.view].y );
     
-    CGRect _rect = CGRectMake([myTouch locationInView:self.view].x, [myTouch locationInView:self.view].y, 50, 50);
-    
-    //[drawing drawRect:rect];
-    [drawing setNeedsDisplay];
+    drawing.rect = CGRectMake([myTouch locationInView:self.view].x, [myTouch locationInView:self.view].y, 50, 50);
 
+    [drawing setNeedsDisplay];
 
 }
 

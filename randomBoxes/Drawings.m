@@ -17,7 +17,8 @@ CGContextRef context;
 {
     self = [super initWithFrame:frame];
     
-    
+    self.clearsContextBeforeDrawing = false;
+    //self.clea
     
     return self;
 }
@@ -25,19 +26,21 @@ CGContextRef context;
 -(void)drawRect:(CGRect )rect
              //in:(UIView *)view{
 {
-    
+    static BOOL iter = false;
     [super drawRect:rect];
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
-        
+    CGContextRef context;
     
+    context = UIGraphicsGetCurrentContext();
+    
+    self.clearsContextBeforeDrawing = false;
+   
     
     NSLog(@" %@ ", context);
     
     if (context != NULL)
     {
-        
-        
+    
     
 //        CGContextBeginPath(context);
 //        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
@@ -50,7 +53,8 @@ CGContextRef context;
         CGContextStrokePath(context);
         
         
-        
+        //CGContextSaveGState(context);
+        iter = true;
 //        CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor);
 //        CGContextMoveToPoint(context, rect.origin.x , rect.origin.y);
 //
@@ -61,6 +65,7 @@ CGContextRef context;
         
         
     }
+    //NSLog(@" %@",self);
 }
 
 
