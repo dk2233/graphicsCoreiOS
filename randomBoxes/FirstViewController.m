@@ -42,7 +42,6 @@ DrawingShape *drawing;
 {
     UITouch *myTouch = [[event allTouches] anyObject];
     
-    
     ///NO == 0;
     NSLog(@" is dictionary %@", ([touches isKindOfClass:NSClassFromString(@"NSDictionary")] == NO) ? @"NO":@"YES");
     NSLog(@" force %f",myTouch.force);
