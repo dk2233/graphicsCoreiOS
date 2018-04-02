@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Drawings.h"
 
-CGContextRef context;
+
 
 @implementation DrawingShape
 
@@ -18,8 +18,8 @@ CGContextRef context;
     self = [super initWithFrame:frame];
     
     self.clearsContextBeforeDrawing = false;
-    //self.clea
     
+    _context = UIGraphicsGetCurrentContext();
     return self;
 }
 
@@ -29,28 +29,28 @@ CGContextRef context;
     static BOOL iter = false;
     [super drawRect:rect];
     
-    CGContextRef context;
-    
-    context = UIGraphicsGetCurrentContext();
+    //CGContextRef context;
+    if (_context == NULL)
+        _context = UIGraphicsGetCurrentContext();
     
     self.clearsContextBeforeDrawing = false;
    
     
-    NSLog(@" %@ ", context);
+    NSLog(@" %@ ", _context);
     
-    if (context != NULL)
+    if (_context != NULL)
     {
     
     
 //        CGContextBeginPath(context);
 //        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-        CGContextSetLineWidth(context, 6.0);
+        CGContextSetLineWidth(_context, 6.0);
         
-        CGContextSetStrokeColorWithColor(context,
+        CGContextSetStrokeColorWithColor(_context,
                                          [UIColor blueColor].CGColor);
         CGRect rectangle = CGRectMake(_rect.origin.x,_rect.origin.y,20,20);
-        CGContextAddRect(context, rectangle);
-        CGContextStrokePath(context);
+        CGContextAddRect(_context, rectangle);
+        CGContextStrokePath(_context);
         
         
         //CGContextSaveGState(context);

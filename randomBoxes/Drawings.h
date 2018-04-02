@@ -15,7 +15,8 @@ extern CGContextRef context;
 
 @interface DrawingShape: UIView
 
-@property(nonatomic) CGRect rect;
+@property (nonatomic) CGRect rect;
+@property (nonatomic) CGContextRef context;
 
 -(id)initWithFrame:(CGRect)frame;
 

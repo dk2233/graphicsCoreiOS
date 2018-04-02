@@ -21,10 +21,12 @@ DrawingShape *drawing;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    drawing = [[DrawingShape alloc] initWithFrame:CGRectMake(20.0,20.0,310.0,500.0)];
+    drawing = [[DrawingShape alloc] initWithFrame:CGRectMake(20.0,20.0,335.0,660.0)];
     drawing.backgroundColor = [UIColor yellowColor];
+    
     [self.view addSubview:drawing];
     self.view.clearsContextBeforeDrawing = false;
+    drawing.rect = CGRectMake(10, 10, 1, 1);
     
 }
 
